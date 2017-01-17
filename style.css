@@ -1,0 +1,110 @@
+body {
+    padding: 0%;
+    overflow: hidden;
+}
+
+#settingsButtons {
+    margin: auto;
+    padding: 1%;
+    text-align: center;
+}
+
+button.settings {
+    border-radius: 25%;
+    width: auto;
+    height: auto;
+    padding: 1%;
+    font-size: 12pt;
+    margin: .5%;
+    margin-bottom: 1%;
+}
+
+#randomize {
+    margin-left: 4%;
+    margin-right: 4%;
+    animation: colorChange 1s linear infinite;
+    -webkit-animation: colorChange 1s linear infinite;
+    animation-play-state: paused;
+}
+
+#randomize:hover {
+    animation-play-state: running;
+}
+
+@keyframes colorChange {
+    0% {background-color: #34495e; border-color: #2c3e50;}
+    12.5% {background-color: #e74c3c; border-color: #c0392b;}
+    25% {background-color: #e67e22; border-color: #d35400;}
+    37.5% {background-color: #f1c40f; border-color: #f39c12;}
+    50% {background-color: #2ecc71; border-color: #27ae60;}
+    67.5% {background-color: #3498db; border-color: #2980b9;}
+    75% {background-color: #9b59b6; border-color: #8e44ad;}
+    87.5% {background-color: #ecf0f1; border-color: #bdc3c7;}
+    100% {background-color: #34495e; border-color: #2c3e50;}
+}
+
+#mainTable {
+    margin: auto;
+}
+
+button {
+  border-radius: 50%;
+  height: 20px;
+  width: 20px;
+  box-shadow: 3px 3px 4px #555555;
+  transition: all .3s ease;
+  color: #ecf0f1;
+}
+
+button:focus {
+  outline: none;
+}
+
+button:hover {
+  box-shadow: 4px 4px 6px #555555;
+}
+
+button:active {
+  box-shadow: 2px 2px 2px #555555;
+}
+
+button.white {
+    background-color: #ecf0f1;
+    border: 2px solid #bdc3c7;
+    color: #95a5a6;
+}
+
+button.red {
+    background-color: #e74c3c;
+    border: 2px solid #c0392b;
+}
+
+button.orange {
+    background-color: #e67e22;
+    border: 2px solid #d35400;
+}
+
+button.yellow {
+    background-color: #f1c40f;
+    border: 2px solid #f39c12;
+}
+
+button.green {
+    background-color: #2ecc71;
+    border: 2px solid #27ae60;
+}
+
+button.blue {
+    background-color: #3498db;
+    border: 2px solid #2980b9;
+}
+
+button.purple {
+    background-color: #9b59b6;
+    border: 2px solid #8e44ad;
+}
+
+button.black {
+    background-color: #34495e;
+    border: 2px solid #2c3e50;
+}
