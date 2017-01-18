@@ -119,6 +119,8 @@ function updateSettings() {
     document.getElementById("export").className = "settings black";
     document.getElementById("help").className = "settings black";
     // Resets CSS of top buttons that aren't supposed to look like the rest
+    docCookies.removeItem("currentState");
+    // Resets cookie
 }
 
 function exportString() {
