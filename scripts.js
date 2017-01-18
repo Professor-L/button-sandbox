@@ -138,5 +138,7 @@ document.getElementById("export").onclick = function() {
 
 document.getElementById("import").onclick = function() {
     var userInput = prompt("Paste your export string in the field below.");
-    importString(userInput);
+    if (userInput.substring(0, 12) == "WROYGBPVVVVV") {
+        importString(userInput);
+    }
 }
