@@ -1,5 +1,16 @@
 var animationInterval;
 
+var longImportArray = [
+    "settings red", "settings orange", "settings yellow",
+    "settings green", "settings blue", "settings purple",
+    "settings white", "settings black",
+    "red", "orange", "yellow", "green",
+    "blue", "purple", "white", "black"
+]; // possible className encounters when importing and exporting
+
+var shortImportArray = ["R", "O", "Y", "G", "B", "P", "W", "V",
+                        "a", "b", "c", "d", "e", "f", "g", "h"]; // Encodings for importing and exporting
+
 document.getElementById("turnWhite").onclick = function() {
     clearBoard("white");
 }
@@ -98,5 +109,34 @@ function updateSettings() {
     document.getElementById("turnPurple").className = "settings purple";
     document.getElementById("turnBlack").className = "settings black";
     document.getElementById("randomize").className = "settings black";
+    document.getElementById("import").className = "settings black";
+    document.getElementById("export").className = "settings black";
+    document.getElementById("help").className = "settings black";
     // Resets CSS of top buttons that aren't supposed to look like the rest
+}
+
+function exportString() {
+    var currentState = document.getElementsByTagName("button");
+    var finalString = "";
+    for (var s = 0; s < currentState.length; s++) {
+        finalString += (shortImportArray[longImportArray.indexOf(currentState[s].className)]);
+    }
+    return finalString;
+}
+
+function importString(stringToImport) {
+    var toImport = stringToImport.split("");
+    var buttons = document.getElementsByTagName("button");
+    for (var t = 0; t < toImport.length; t++) {
+        buttons[t].className = longImportArray[shortImportArray.indexOf(toImport[t])];
+    }
+}
+
+document.getElementById("export").onclick = function() {
+    prompt("Your export string is below.  Copy and paste that code and save it somewhere, and import it when you want to see the art again!", exportString());
+}
+
+document.getElementById("import").onclick = function() {
+    var userInput = prompt("Paste your export string in the field below.");
+    importString(userInput);
 }

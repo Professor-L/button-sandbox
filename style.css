@@ -20,7 +20,6 @@ button.settings {
 }
 
 #randomize {
-    margin-left: 4%;
     margin-right: 4%;
     animation: colorChange 1s linear infinite;
     -webkit-animation: colorChange 1s linear infinite;
