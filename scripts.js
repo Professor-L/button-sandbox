@@ -60,11 +60,25 @@ var colorArray = ["white", "red", "orange", "yellow", "green", "blue", "purple",
 
 var totalButtons = 0; // Used to keep track of number of buttons so each can have unique ID
 
-for (var i = 0; i < 25; i++) {
+// Allows users to set the grid size up to a given limit
+var rows = parseInt(prompt("How many rows would you like, up to 25?", "25"), 10);
+var columns = parseInt(prompt("How many columns would you like, up to 50?", "50"), 10);
+
+if (rows > 25) {
+    rows = 25;
+}
+
+if (columns > 50) {
+    columns = 50;
+}
+
+var buttonsNum = rows * columns;
+
+for (var i = 0; i < rows; i++) {
     var newRow = document.createElement("TR");
     table.appendChild(newRow); // Appends 25 rows to the table
     
-    for (var k = 0; k < 50; k++) {
+    for (var k = 0; k < columns; k++) {
         var newData = document.createElement("TD");
         newRow.appendChild(newData); // Appends 50 <td> tags to each <tr> for a total of 1,250 items
         
@@ -77,7 +91,7 @@ for (var i = 0; i < 25; i++) {
     }
 }
 
-for (var i = 1; i <= 1250; i++) {
+for (var i = 1; i <= buttonsNum; i++) {
     var btn = document.getElementById("btn" + i.toString());
     // Gets id of current button
     btn.onclick = function() {
