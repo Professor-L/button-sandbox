@@ -1,5 +1,7 @@
 var animationInterval;
 
+var introMessageString = "WROYGBPVVVVVggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggaaaaggbgggbgcccccgdddddggeeeggffggfgggggggggggggggagggagbgggbgggcgggggdgggegggegffggfgggggggggggggggagggagbgggbgggcgggggdgggegggegffggfgggggggggggggggagggagbgggbgggcgggggdgggegggegfgfgfgggggggggggggggaaaaggbgggbgggcgggggdgggegggegfgfgfgggggggggggggggagggagbgggbgggcgggggdgggegggegfgfgfgggggggggggggggagggagbgggbgggcgggggdgggegggegfggffgggggggggggggggagggagbgggbgggcgggggdgggegggegfggffgggggggggggggggaaaagggbbbggggcgggggdggggeeeggfggffgggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggghhhhgghhhgghhgghghhhgghhhggghhhgghggghggggggggggghggggghggghghhgghghgghghgghghggghgghghgggggggggggghggggghggghghghghghgghghgghghggghgghghggggggggggggghhhgghhhhhghghghghgghghhhgghggghggghggggggggggggggggghghggghghghghghgghghgghghggghgghghgggggggggggggggghghggghghgghhghgghghgghghggghgghghgggggggggggghhhhgghggghghgghhghhhgghhhggghhhgghggghggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg";
+
 var longImportArray = [
     "settings red", "settings orange", "settings yellow",
     "settings green", "settings blue", "settings purple",
@@ -76,10 +78,14 @@ for (var i = 0; i < 25; i++) {
 }
 
 for (var i = 1; i <= 1250; i++) {
-    var btn = document.getElementById("btn" + i.toString()); // Gets id of current button
+    var btn = document.getElementById("btn" + i.toString());
+    // Gets id of current button
     btn.onclick = function() {
-        currentColorIndex = colorArray.indexOf(this.className); // Gets current color as index (integer)
-        this.className = colorArray[(currentColorIndex + 1)%8]; // Cycles through to next color using a modulus cycle
+        currentColorIndex = colorArray.indexOf(this.className);
+        // Gets current color as index (integer)
+        this.className = colorArray[(currentColorIndex + 1)%8];
+        // Cycles through to next color using a modulus cycle
+        docCookies.setItem("currentState", exportString(), Infinity);
     }
 }
 
@@ -122,6 +128,8 @@ function exportString() {
         finalString += (shortImportArray[longImportArray.indexOf(currentState[s].className)]);
     }
     return finalString;
+    
+    // Convers state of buttons into a long string
 }
 
 function importString(stringToImport) {
@@ -130,10 +138,13 @@ function importString(stringToImport) {
     for (var t = 0; t < toImport.length; t++) {
         buttons[t].className = longImportArray[shortImportArray.indexOf(toImport[t])];
     }
+    
+    // Converts long string back into colors, then assigns colors to buttons
 }
 
 document.getElementById("export").onclick = function() {
     prompt("Your export string is below.  Copy and paste that code and save it somewhere, and import it when you want to see the art again!", exportString());
+    // Gives user export string 
 }
 
 document.getElementById("import").onclick = function() {
@@ -141,4 +152,15 @@ document.getElementById("import").onclick = function() {
     if (userInput.substring(0, 12) == "WROYGBPVVVVV") {
         importString(userInput);
     }
+    // Promps for import string
+    // Imports only if first 12 characters are valid
+    // Faulty imports beyond first 12 don't negatively affect page and throw no errors
+}
+
+if (docCookies.hasItem("currentState")) {
+    importString(docCookies.getItem("currentState"));
+}
+
+else {
+    importString(introMessageString);
 }
