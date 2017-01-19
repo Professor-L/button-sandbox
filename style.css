@@ -1,6 +1,32 @@
 body {
     padding: 0%;
     overflow: hidden;
+    font-family: "Gill Sans", "Arial";
+    font-weight: lighter;
+}
+
+h1 {
+    color: #8e44ad;
+}
+
+textarea {
+    resize: none;
+    overflow: auto;
+    padding: 10px;
+    font-family: "Gill Sans", "Arial";
+    font-weight: lighter;
+    overflow: auto;
+    background-color: #ecf0f1;
+    border: 3px solid #bdc3c7;
+    overflow: hidden;
+    border-radius: 10px;
+    transition: all .3s ease;
+    box-shadow: 1px 1px 4px #555555;
+}
+
+textarea:focus {
+    outline: none;
+    box-shadow: 3px 3px 10px #555555;
 }
 
 #settingsButtons {
@@ -22,7 +48,7 @@ button.settings {
 #randomize {
     margin-right: 4%;
     animation: colorChange 1s linear infinite;
-    -webkit-animation: colorChange 1s linear infinite;
+    -webkit-animation: colorChange .5s linear infinite;
     animation-play-state: paused;
 }
 
@@ -32,14 +58,12 @@ button.settings {
 
 @keyframes colorChange {
     0% {background-color: #34495e; border-color: #2c3e50;}
-    12.5% {background-color: #e74c3c; border-color: #c0392b;}
-    25% {background-color: #e67e22; border-color: #d35400;}
-    37.5% {background-color: #f1c40f; border-color: #f39c12;}
-    50% {background-color: #2ecc71; border-color: #27ae60;}
-    67.5% {background-color: #3498db; border-color: #2980b9;}
-    75% {background-color: #9b59b6; border-color: #8e44ad;}
-    87.5% {background-color: #ecf0f1; border-color: #bdc3c7;}
-    100% {background-color: #34495e; border-color: #2c3e50;}
+    16.6% {background-color: #e74c3c; border-color: #c0392b;}
+    33.3% {background-color: #e67e22; border-color: #d35400;}
+    50% {background-color: #f1c40f; border-color: #f39c12;}
+    66.6% {background-color: #2ecc71; border-color: #27ae60;}
+    83.3% {background-color: #3498db; border-color: #2980b9;}
+    100% {background-color: #9b59b6; border-color: #8e44ad;}
 }
 
 #mainTable {
@@ -106,4 +130,30 @@ button.purple {
 button.black {
     background-color: #34495e;
     border: 2px solid #2c3e50;
+}
+
+.modalBackground {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+/* Modal Content/Box */
+.modalContent {
+    background-color: #ecf0f1;
+    margin: 15% auto; 
+    padding: 12px 20px;
+    width: 50%;
+    border: 3px solid #bdc3c7;
+    border-radius: 8px;
+}
+
+#closeExport, #closeImport {
+    margin: 2%;
 }

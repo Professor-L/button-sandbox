@@ -49,6 +49,9 @@ document.getElementById("randomize").onclick = function() {
     randomizeBoard();
 }
 
+var importModal = document.getElementById("importModal");
+var exportModal = document.getElementById("exportModal");
+
 function randomElement(a) {
     return a[Math.floor(Math.random() * a.length)]; // Returns random element of array a[]
 }
@@ -116,6 +119,8 @@ function updateSettings() {
     document.getElementById("import").className = "settings black";
     document.getElementById("export").className = "settings black";
     document.getElementById("help").className = "settings black";
+    document.getElementById("closeImport").className = "settings black";
+    document.getElementById("closeExport").className = "settings black";
     // Resets CSS of top buttons that aren't supposed to look like the rest
     docCookies.removeItem("currentState");
     // Resets cookie
@@ -143,18 +148,31 @@ function importString(stringToImport) {
 }
 
 document.getElementById("export").onclick = function() {
-    prompt("Your export string is below.  Copy and paste that code and save it somewhere, and import it when you want to see the art again!", exportString());
-    // Gives user export string 
+    exportModal.style.display = "block";
+    document.getElementById("exportStringText").innerHTML = exportString();
 }
 
 document.getElementById("import").onclick = function() {
-    var userInput = prompt("Paste your export string in the field below.");
-    if (userInput.substring(0, 12) == "WROYGBPVVVVV") {
-        importString(userInput);
+    importModal.style.display = "block";
+}
+
+window.onclick = function(event) {
+    if (event.target == importModal || event.target == exportModal) {
+        event.target.style.display = "none";
     }
-    // Promps for import string
-    // Imports only if first 12 characters are valid
-    // Faulty imports beyond first 12 don't negatively affect page and throw no errors
+}
+
+document.getElementById("closeExport").onclick = function() {
+    exportModal.style.display = "none";
+}
+
+document.getElementById("closeImport").onclick = function() {
+    var si = document.getElementById("importStringText").value;
+    if (si.substring(0, 12) == "WROYGBPVVVVV" && si.slice(-2) == "VV") {
+        importString(si);
+    }
+    importModal.style.display = "none";
+    document.getElementById("importStringText").value = "";
 }
 
 if (docCookies.hasItem("currentState")) {
