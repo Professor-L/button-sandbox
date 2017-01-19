@@ -11,12 +11,10 @@ h1 {
 
 textarea {
     resize: none;
-    overflow: auto;
     padding: 10px;
     font-family: "Gill Sans", "Arial";
     font-weight: lighter;
     font-size: 8pt;
-    overflow: auto;
     background-color: #ecf0f1;
     border: 3px solid #bdc3c7;
     overflow: hidden;
