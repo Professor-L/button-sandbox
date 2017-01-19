@@ -51,6 +51,7 @@ document.getElementById("randomize").onclick = function() {
 
 var importModal = document.getElementById("importModal");
 var exportModal = document.getElementById("exportModal");
+var helpModal = document.getElementById("helpModal");
 
 function randomElement(a) {
     return a[Math.floor(Math.random() * a.length)]; // Returns random element of array a[]
@@ -121,6 +122,7 @@ function updateSettings() {
     document.getElementById("help").className = "settings black";
     document.getElementById("closeImport").className = "settings black";
     document.getElementById("closeExport").className = "settings black";
+    document.getElementById("closeHelp").className = "settings black";
     // Resets CSS of top buttons that aren't supposed to look like the rest
     docCookies.removeItem("currentState");
     // Resets cookie
@@ -157,7 +159,7 @@ document.getElementById("import").onclick = function() {
 }
 
 window.onclick = function(event) {
-    if (event.target == importModal || event.target == exportModal) {
+    if (event.target == importModal || event.target == exportModal || event.target == helpModal) {
         event.target.style.display = "none";
     }
 }
@@ -173,6 +175,14 @@ document.getElementById("closeImport").onclick = function() {
     }
     importModal.style.display = "none";
     document.getElementById("importStringText").value = "";
+}
+
+document.getElementById("help").onclick = function() {
+    helpModal.style.display = "block";
+}
+
+document.getElementById("closeHelp").onclick = function() {
+    helpModal.style.display = "none";
 }
 
 if (docCookies.hasItem("currentState")) {
