@@ -22,6 +22,7 @@ textarea {
     border-radius: 10px;
     transition: all .3s ease;
     box-shadow: 1px 1px 4px #555555;
+    width: 90%;
 }
 
 textarea:focus {
