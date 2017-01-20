@@ -126,6 +126,7 @@ function updateSettings() {
     document.getElementById("help").className = "settings black";
     document.getElementById("closeImport").className = "settings black";
     document.getElementById("closeExport").className = "settings black";
+    document.getElementById("aotwButton").className = "settings black";
     document.getElementById("closeHelp").className = "settings black";
     // Resets CSS of top buttons that aren't supposed to look like the rest
     docCookies.removeItem("currentState");
@@ -187,6 +188,10 @@ document.getElementById("help").onclick = function() {
 
 document.getElementById("closeHelp").onclick = function() {
     helpModal.style.display = "none";
+}
+
+document.getElementById("aotwButton").onclick = function() {
+    importString(aotwString);
 }
 
 window.onkeydown = function(event) {
