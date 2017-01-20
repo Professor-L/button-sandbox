@@ -1,6 +1,5 @@
 var animationInterval;
-
-var defaultString = "WROYGBPVVVVVggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggaaaaggbgggbgcccccgdddddggeeeggffggfgggggggggggggggagggagbgggbgggcgggggdgggegggegffggfgggggggggggggggagggagbgggbgggcgggggdgggegggegffggfgggggggggggggggagggagbgggbgggcgggggdgggegggegfgfgfgggggggggggggggaaaaggbgggbgggcgggggdgggegggegfgfgfgggggggggggggggagggagbgggbgggcgggggdgggegggegfgfgfgggggggggggggggagggagbgggbgggcgggggdgggegggegfggffgggggggggggggggagggagbgggbgggcgggggdgggegggegfggffgggggggggggggggaaaagggbbbggggcgggggdggggeeeggfggffgggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggghhhhgghhhgghhgghghhhgghhhggghhhgghggghggggggggggghggggghggghghhgghghgghghgghghggghgghghgggggggggggghggggghggghghghghghgghghgghghggghgghghggggggggggggghhhgghhhhhghghghghgghghhhgghggghggghggggggggggggggggghghggghghghghghgghghgghghggghgghghgggggggggggggggghghggghghgghhghgghghgghghggghgghghgggggggggggghhhhgghggghghgghhghhhgghhhggghhhgghggghgggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggVVV";
+var lastString;
 
 var longImportArray = [
     "settings red", "settings orange", "settings yellow",
@@ -85,6 +84,7 @@ for (var i = 1; i <= 1250; i++) {
     var btn = document.getElementById("btn" + i.toString());
     // Gets id of current button
     btn.onclick = function() {
+        lastString = exportString();
         currentColorIndex = colorArray.indexOf(this.className);
         // Gets current color as index (integer)
         this.className = colorArray[(currentColorIndex + 1)%8];
@@ -94,6 +94,7 @@ for (var i = 1; i <= 1250; i++) {
 }
 
 function clearBoard(color) {
+    lastString = exportString();
     buttonArray = document.getElementsByTagName("button"); // Gets list of every button on the page
     for (var p = 0; p < buttonArray.length; p++) {
         buttonArray[p].className = color; // Sets every button to have class of *color*
@@ -102,6 +103,7 @@ function clearBoard(color) {
 }
 
 function randomizeBoard() {
+    lastString = exportString();
     buttonArray = document.getElementsByTagName("button"); // Gets list of every button on the page
     for (var q = 0; q < buttonArray.length; q++) {
         buttonArray[q].className = randomElement(colorArray); // Sets every button to have a class of a random color
@@ -125,7 +127,6 @@ function updateSettings() {
     document.getElementById("closeImport").className = "settings black";
     document.getElementById("closeExport").className = "settings black";
     document.getElementById("closeHelp").className = "settings black";
-    document.getElementById("aotwButton").className = "settings black";
     // Resets CSS of top buttons that aren't supposed to look like the rest
     docCookies.removeItem("currentState");
     // Resets cookie
@@ -188,9 +189,11 @@ document.getElementById("closeHelp").onclick = function() {
     helpModal.style.display = "none";
 }
 
-document.getElementById("aotwButton").onclick = function() {
-    importModal.style.display = "none";
-    importString(aotwString);
+window.onkeydown = function(event) {
+    event = event || window.event;
+    if (event.which == 85 || event.keyCode == 85) {
+        importString(lastString);
+    }
 }
 
 if (docCookies.hasItem("currentState")) {
