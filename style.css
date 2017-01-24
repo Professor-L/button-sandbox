@@ -5,6 +5,10 @@ body {
     font-weight: lighter;
 }
 
+b {
+    font-weight: normal;
+}
+
 h1 {
     color: #34495e;
 }
@@ -158,7 +162,8 @@ button.black {
 /* Modal Content/Box */
 .modalContent {
     background-color: #ecf0f1;
-    margin: 15% auto; 
+    margin: 15% auto;
+    margin-top: 10%;
     padding: 12px 20px;
     width: 50%;
     border: 3px solid #bdc3c7;
