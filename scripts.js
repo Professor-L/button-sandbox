@@ -1,7 +1,6 @@
-var animationInterval;
-var lastString;
+var lastString; // String defined to enable undo function
 
-var defaultString = "WROYGBPVVVVVggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggaaaaggbgggbgcccccgdddddggeeeggffggfgggggggggggggggagggagbgggbgggcgggggdgggegggegffggfgggggggggggggggagggagbgggbgggcgggggdgggegggegffggfgggggggggggggggagggagbgggbgggcgggggdgggegggegfgfgfgggggggggggggggaaaaggbgggbgggcgggggdgggegggegfgfgfgggggggggggggggagggagbgggbgggcgggggdgggegggegfgfgfgggggggggggggggagggagbgggbgggcgggggdgggegggegfggffgggggggggggggggagggagbgggbgggcgggggdgggegggegfggffgggggggggggggggaaaagggbbbggggcgggggdggggeeeggfggffgggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggghhhhgghhhgghhgghghhhgghhhggghhhgghggghggggggggggghggggghggghghhgghghgghghgghghggghgghghgggggggggggghggggghggghghghghghgghghgghghggghgghghggggggggggggghhhgghhhhhghghghghgghghhhgghggghggghggggggggggggggggghghggghghghghghgghghgghghggghgghghgggggggggggggggghghggghghgghhghgghghgghghggghgghghgggggggggggghhhhgghggghghgghhghhhgghhhggghhhgghggghggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg";
+var defaultString = "WROYGBPVVVVVggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggaaaaggbgggbgcccccgdddddggeeeggffggfgggggggggggggagggagbgggbgggcgggggdgggegggegffggfgggggggggggggagggagbgggbgggcgggggdgggegggegffggfgggggggggggggagggagbgggbgggcgggggdgggegggegfgfgfgggggggggggggaaaaggbgggbgggcgggggdgggegggegfgfgfgggggggggggggagggagbgggbgggcgggggdgggegggegfgfgfgggggggggggggagggagbgggbgggcgggggdgggegggegfggffgggggggggggggagggagbgggbgggcgggggdgggegggegfggffgggggggggggggaaaagggbbbggggcgggggdggggeeeggfggffgggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggghhhhgghhhgghhgghghhhgghhhggghhhgghggghggggggggghggggghggghghhgghghgghghgghghggghgghghgggggggggghggggghggghghghghghgghghgghghggghgghghggggggggggghhhgghhhhhghghghghgghghhhgghggghggghggggggggggggggghghggghghghghghgghghgghghggghgghghgggggggggggggghghggghghgghhghgghghgghghggghgghghgggggggggghhhhgghggghghgghhghhhgghhhggghhhgghggghgggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggVVVV";
 // Default artwork upon page load
 
 var longImportArray = [
@@ -66,11 +65,11 @@ var colorArray = ["white", "red", "orange", "yellow", "green", "blue", "purple",
 
 var totalButtons = 0; // Used to keep track of number of buttons so each can have unique ID
 
-for (var i = 0; i < 25; i++) {
+for (var i = 0; i < 24; i++) {
     var newRow = document.createElement("TR");
     table.appendChild(newRow); // Appends 25 rows to the table
     
-    for (var k = 0; k < 50; k++) {
+    for (var k = 0; k < 48; k++) {
         var newData = document.createElement("TD");
         newRow.appendChild(newData); // Appends 50 <td> tags to each <tr> for a total of 1,250 items
         
@@ -83,7 +82,7 @@ for (var i = 0; i < 25; i++) {
     }
 }
 
-for (var i = 1; i <= 1250; i++) {
+for (var i = 1; i <= 1152; i++) {
     var btn = document.getElementById("btn" + i.toString());
     // Gets id of current button
     btn.onclick = function() {
@@ -148,11 +147,13 @@ function exportString() {
 }
 
 function importString(stringToImport) {
-    var toImport = stringToImport.split("");
+    if (stringToImport.length <= 1168) {
+        var toImport = stringToImport.split("");
     var buttons = document.getElementsByTagName("button");
     for (var t = 0; t < toImport.length; t++) {
         buttons[t].className = longImportArray[shortImportArray.indexOf(toImport[t])];
     }
+}
     
     // Converts long string back into colors, then assigns colors to buttons
 }
