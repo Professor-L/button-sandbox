@@ -5,10 +5,6 @@ body {
     font-weight: lighter;
 }
 
-b {
-    font-weight: normal;
-}
-
 h1 {
     color: #34495e;
 }
@@ -48,16 +44,6 @@ textarea:focus {
     margin: auto;
     padding: 1%;
     text-align: center;
-}
-
-button.settings {
-    border-radius: 25%;
-    width: auto;
-    height: auto;
-    padding: 1%;
-    font-size: 12pt;
-    margin: .5%;
-    margin-bottom: 1%;
 }
 
 #randomize {
@@ -162,8 +148,7 @@ button.black {
 /* Modal Content/Box */
 .modalContent {
     background-color: #ecf0f1;
-    margin: 15% auto;
-    margin-top: 10%;
+    margin: 15% auto; 
     padding: 12px 20px;
     width: 50%;
     border: 3px solid #bdc3c7;
@@ -172,4 +157,15 @@ button.black {
 
 #closeExport, #closeImport {
     margin: 2%;
+}
+
+button.settings {
+    border-radius: 10px;
+    height: auto;
+    width: auto;
+    display: inline;
+    padding: 10px;
+    font-size: 12pt;
+    margin: 10px;
+    margin-bottom: 10px;
 }
