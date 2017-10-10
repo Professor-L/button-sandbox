@@ -159,12 +159,12 @@ function importString(stringToImport) {
 }
 
 document.getElementById("export").onclick = function() {
-    exportModal.style.display = "block";
+    exportModal.style.display = "flex";
     document.getElementById("exportStringText").innerHTML = exportString();
 }
 
 document.getElementById("import").onclick = function() {
-    importModal.style.display = "block";
+    importModal.style.display = "flex";
 }
 
 window.onclick = function(event) {
@@ -187,7 +187,7 @@ document.getElementById("closeImport").onclick = function() {
 }
 
 document.getElementById("help").onclick = function() {
-    helpModal.style.display = "block";
+    helpModal.style.display = "flex";
 }
 
 document.getElementById("closeHelp").onclick = function() {
