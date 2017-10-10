@@ -143,6 +143,9 @@ button.black {
     height: 100%;
     overflow: auto;
     background-color: rgba(0,0,0,0.4);
+    
+    flex-direction: column;
+    justify-content: center;
 }
 
 /* Modal Content/Box */
